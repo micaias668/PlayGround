@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#101114" />
+  <title>IncurSio in Abyssum — La última vigilia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Unbounded:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="IncurSio in Abyssum"><span class="brand-mark">✣</span><span>INCURSIO <i>IN ABYSSUM</i></span></a>
+      <div class="chapter"><span class="live-dot"></span><span id="chapter-label">DÍA I · LA ALDEA</span></div>
+      <div class="top-actions">
+        <button id="language-btn" class="icon-btn" aria-label="Cambiar idioma">ES <span>⌄</span></button>
+        <button id="sound-btn" class="icon-btn" aria-label="Sonido">♫</button>
+        <button id="settings-btn" class="icon-btn" aria-label="Ajustes">⚙</button>
+      </div>
+    </header>
+
+    <section class="game-grid">
+      <section class="play-column">
+        <div class="scene-frame" id="scene-frame">
+          <canvas id="scene" aria-label="Escena de juego"></canvas>
+          <div class="scene-vignette"></div>
+          <div class="scene-topline"><div class="location"><span class="location-icon">⌖</span><div><b id="location-name">SANTA VELA</b><small id="location-sub">LA ALDEA · MEDIODÍA</small></div></div><div class="weather">☁ <span id="weather-label">CIELO CARGADO</span></div></div>
+          <div class="scene-caption" id="scene-caption"><span class="caption-kicker">AÑO 1897 · LOS CÁRPATOS</span><strong>La campana ha sonado<br>por tercera vez.</strong><p>Algo vuelve a caminar bajo la tierra.</p></div>
+          <div class="boss-banner hidden" id="boss-banner"><span>✦ AMENAZA MAYOR ✦</span><b id="boss-name">EL ABAD HUECO</b></div>
+          <div class="combat-flash" id="combat-flash"></div>
+          <div class="canvas-prompt" id="canvas-prompt">WASD MOVER <span>·</span> ESPACIO ATACAR <span>·</span> E INTERACTUAR</div>
+          <div class="mobile-stick" id="move-stick"><div class="stick-ring"><div class="stick-knob"></div></div></div>
+          <div class="mobile-actions" id="mobile-actions">
+            <button data-action="dodge" class="touch-action dodge">↗<small>ESQUIVAR</small></button>
+            <button data-action="attack" class="touch-action attack">⚔<small>ATACAR</small></button>
+            <button data-action="skill" class="touch-action skill">✣<small>FE</small></button>
+          </div>
+          <div class="touch-interact" id="touch-interact"><button data-action="interact">HABLAR / USAR <b>↗</b></button></div>
+        </div>
+        <div class="game-controls">
+          <div class="objective"><span class="objective-icon">✦</span><div><small id="objective-kicker">OBJETIVO ACTUAL</small><b id="objective-text">Habla con la Hermana Agatha</b></div></div>
+          <div class="control-hint" id="control-hint"><kbd>WASD</kbd> Mover <kbd>E</kbd> Interactuar <kbd>␣</kbd> Atacar</div>
+          <button id="pause-btn" class="pause-btn" aria-label="Pausa">Ⅱ</button>
+        </div>
+      </section>
+
+      <aside class="side-panel">
+        <div class="panel-title"><span>VIGILIA <em>01</em></span><button class="text-btn" id="journal-btn">DIARIO ↗</button></div>
+        <div class="hero-card"><div class="portrait"><span class="portrait-halo"></span><span class="portrait-figure">☩</span><span class="portrait-label">EL PEREGRINO</span><span class="portrait-level">NV 01</span></div><div class="hero-info"><div class="hero-name"><span id="hero-name">EL PEREGRINO</span><button id="rename-btn" title="Personalizar">✎</button></div><div class="hero-class" id="hero-class">EXORCISTA · CAMINANTE</div><div class="stat-line"><span>VITALIDAD</span><b id="hp-text">100 / 100</b></div><div class="meter hp-meter"><i id="hp-fill"></i></div><div class="stat-line faith-label"><span>FE</span><b id="faith-text">+20%</b></div><div class="meter faith-meter"><i id="faith-fill"></i><span class="faith-mid"></span></div></div></div>
+
+        <div class="section-heading"><span>ARMAMENTO</span><button class="text-btn" id="loadout-btn">CAMBIAR ↗</button></div>
+        <button class="weapon-card" id="weapon-card"><span class="weapon-icon">⚔</span><span class="weapon-details"><b id="weapon-name">HOZ DE VIGILIA</b><small id="weapon-preset">PRESAGIO · PRESET 01/05</small></span><span class="weapon-chevron">⌄</span></button>
+        <div class="ability-row"><div class="ability"><span class="ability-glyph">╱</span><b>TAJO</b><small>RÁPIDO</small></div><div class="ability"><span class="ability-glyph">◌</span><b>VOTO</b><small>DEFENSA</small></div><div class="ability"><span class="ability-glyph">✣</span><b>EXORCISMO</b><small id="skill-cost">20 FE</small></div><div class="ability"><span class="ability-glyph">↗</span><b>ESQUIVA</b><small>RECARGA</small></div></div>
+
+        <div class="section-heading village-heading"><span>REFUGIO · SANTA VELA</span><span class="time-chip" id="time-chip">☼ DÍA</span></div>
+        <div class="village-grid" id="village-grid">
+          <button data-building="iglesia" class="building active"><span>♜</span><b>IGLESIA</b></button><button data-building="forja" class="building"><span>⚒</span><b>FORJA</b></button><button data-building="botica" class="building"><span>⚗</span><b>BOTICA</b></button>
+          <button data-building="posada" class="building"><span>⌂</span><b>POSADA</b></button><button data-building="archivo" class="building"><span>▤</span><b>ARCHIVO</b></button><button data-building="cementerio" class="building"><span>†</span><b>CEMENTERIO</b></button>
+          <button data-building="mercado" class="building"><span>◇</span><b>MERCADO</b></button><button data-building="establo" class="building"><span>♘</span><b>ESTABLO</b></button><button data-building="puerta" class="building"><span>⚑</span><b>PUERTA</b></button>
+        </div>
+        <div class="raid-card"><div class="raid-head"><span>INCURSIÓN</span><span id="raid-count">01 <i>/ 08</i></span></div><div class="raid-progress"><i id="raid-progress"></i></div><div class="raid-foot"><span id="raid-name">EL BOSQUE QUE RESPIRA</span><span id="raid-rank">—</span></div></div>
+      </aside>
+    </section>
+    <footer class="bottom-bar"><span>4D GAMES <i>·</i> UNA VIGILIA EN LOS CÁRPATOS</span><span id="footer-status">GUARDADO LOCALMENTE <i>●</i></span><span>PREMIUM <i>·</i> SIN MICROTRANSACCIONES</span></footer>
+  </main>
+
+  <div class="modal-backdrop hidden" id="modal-backdrop"><section class="modal" id="modal" role="dialog" aria-modal="true"><button class="modal-close" id="modal-close">×</button><div class="modal-content" id="modal-content"></div></section></div>
+  <div class="toast" id="toast"></div>
+  <script src="game.js"></script>
+</body>
+</html>
