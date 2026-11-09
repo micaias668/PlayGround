@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#090b16">
+  <link rel="icon" href="data:,">
+  <meta name="description" content="Pulse Runner — a neon rhythm platformer. Tap to the beat, jump the spikes, and chase a perfect run.">
+  <title>Pulse Runner — Hit the beat. Make the jump.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Pulse Runner home">
+        <span class="brand-mark"><i></i><i></i><i></i></span>
+        <span>PULSE<span class="brand-slash">//</span>RUN</span>
+      </a>
+      <div class="top-meta"><span class="live-dot"></span><span>RHYTHM ARCADE</span><span class="meta-divider"></span><span>ONE BUTTON. ONE BEAT.</span></div>
+      <button class="sound-button" id="soundButton" aria-label="Toggle sound" title="Toggle sound"><span id="soundIcon">♫</span><span class="sound-label">SOUND ON</span></button>
+    </header>
+
+    <section class="game-section" aria-label="Pulse Runner game">
+      <div class="section-heading">
+        <div><p class="eyebrow">A LITTLE GAME OF TIMING</p><h1>Hit the beat.<br class="mobile-break"> <span>Make the jump.</span></h1></div>
+        <div class="session-tag"><span class="tag-icon">◈</span> SESSION 01 <span class="tag-line"></span> <b>112 BPM</b></div>
+      </div>
+
+      <div class="game-frame" id="gameFrame">
+        <canvas id="gameCanvas" aria-label="Game area. Tap, click, or press space to jump." role="img"></canvas>
+        <div class="hud">
+          <div class="hud-group">
+            <div class="hud-chip"><span class="hud-label">BEST</span><span class="hud-value" id="bestValue">00%</span></div>
+            <div class="hud-chip progress-chip"><span class="hud-label">RUN</span><span class="hud-value" id="progressValue">00%</span></div>
+          </div>
+          <div class="beat-indicator" id="beatIndicator" aria-label="Beat indicator">
+            <span class="beat-dot"></span><span class="beat-dot"></span><span class="beat-dot"></span><span class="beat-dot"></span>
+          </div>
+          <button class="pause-button" id="pauseButton" aria-label="Pause game" title="Pause (P)"><span>Ⅱ</span></button>
+        </div>
+        <div class="overlay" id="overlay">
+          <div class="overlay-card" id="overlayCard">
+            <div class="card-kicker"><span class="kicker-line"></span><span id="cardKicker">READY WHEN YOU ARE</span><span class="kicker-line"></span></div>
+            <div class="play-glyph" id="playGlyph"><span></span></div>
+            <h2 id="cardTitle">Find your<br><em>rhythm.</em></h2>
+            <p id="cardText">Tap to jump. Land on the beat.<br>Don't let the spikes break your flow.</p>
+            <button class="primary-button" id="actionButton"><span id="actionLabel">START RUN</span><span class="button-arrow">↗</span></button>
+            <div class="key-hint" id="keyHint"><kbd>SPACE</kbd> or <kbd>↑</kbd> <span>to jump</span></div>
+          </div>
+        </div>
+        <div class="flash" id="flash"></div>
+      </div>
+      <div class="underbar">
+        <div class="track-info"><span class="track-icon">♫</span><span><b>NEON CIRCUIT</b><small>ORIGINAL BEAT · 112 BPM</small></span></div>
+        <div class="level-progress" aria-label="Level progress"><div class="level-progress-fill" id="progressFill"></div><span class="progress-marker"></span></div>
+        <div class="control-tip"><span class="tap-icon"><i></i></span><span>TAP TO JUMP</span></div>
+      </div>
+    </section>
+    <footer class="footer"><span>BUILT FOR THE BEAT <b>✳</b></span><span>NO CHECKPOINTS. JUST FLOW.</span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
